@@ -1,0 +1,48 @@
+/* 
+  Localizable.strings
+  MrposGeeks
+
+  Created by 任昌 陳 on 2016/9/2.
+  Copyright © 2016年 任昌 陳. All rights reserved.
+*/
+
+//公用區
+"buttonSure"="確定";
+"buttonCancle"="取消";
+"dataIsNull"="資料不存在";
+"inputIsError"="請檢查資料是否正確";
+"saveIsSuccess"="儲存成功";
+"deleteIsSuccess"="刪除成功";
+"deleteForSure"="確定刪除嗎?";
+"resetIsSuccess"="重置成功";
+"resetForSure"="確定重置嗎?";
+"submitIsSuccess"="送出成功";
+"orderIsCheckout"="訂單完成結帳";
+
+//訂餐
+"orderLowPrice"="最低消費";
+
+//登入頁
+"loginIsError"="帳號密碼錯誤";
+"loginIsNull"="請輸入帳號密碼";
+
+
+//選單
+"首頁"="首頁";
+"點餐"="點餐";
+"套餐設定"="套餐設定";
+"餐點設定"="餐點設定";
+"餐點選項設定"="餐點選項設定";
+"桌次設定"="桌次設定";
+"系統設定"="系統設定";
+"登出"="登出";
+
+
+//單位
+"unitPeople"="人";
+"unitPrice"="元";
+
+//單詞
+"wordPackage"="套餐";
+"wordDelete"="刪除";
+"wordPleaseChoose"="請選擇";
