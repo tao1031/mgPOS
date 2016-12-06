@@ -11,6 +11,8 @@
 		075273281D82993300B13DEC /* RTMenuDishOptionTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 075273271D82993300B13DEC /* RTMenuDishOptionTypeCell.m */; };
 		07FF6DFB1D7E68F100A8856A /* RTMenuDishOption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07FF6DFA1D7E68F100A8856A /* RTMenuDishOption.storyboard */; };
 		07FF6E001D7E714B00A8856A /* RTMenuDishOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF6DFF1D7E714B00A8856A /* RTMenuDishOption.m */; };
+		84A1C6E21DF6B12200175BAE /* SeesionAuthUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C6DF1DF6B12200175BAE /* SeesionAuthUIViewController.m */; };
+		84A1C6E31DF6B12200175BAE /* urlAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C6E11DF6B12200175BAE /* urlAPIHelper.m */; };
 		A5AECD49C9D9FE5A3EE637A9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36E7F226A3B408FF06C25D /* libPods.a */; };
 		A70F0BE71D66AC0A0092124D /* RTMenuIndex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A70F0BE61D66AC0A0092124D /* RTMenuIndex.storyboard */; };
 		A70F0BEA1D66ACEA0092124D /* RTMenuIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = A70F0BE91D66ACEA0092124D /* RTMenuIndex.m */; };
@@ -125,6 +127,10 @@
 		07FF6DFA1D7E68F100A8856A /* RTMenuDishOption.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RTMenuDishOption.storyboard; sourceTree = "<group>"; };
 		07FF6DFE1D7E714B00A8856A /* RTMenuDishOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMenuDishOption.h; sourceTree = "<group>"; };
 		07FF6DFF1D7E714B00A8856A /* RTMenuDishOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMenuDishOption.m; sourceTree = "<group>"; };
+		84A1C6DE1DF6B12200175BAE /* SeesionAuthUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeesionAuthUIViewController.h; sourceTree = "<group>"; };
+		84A1C6DF1DF6B12200175BAE /* SeesionAuthUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeesionAuthUIViewController.m; sourceTree = "<group>"; };
+		84A1C6E01DF6B12200175BAE /* urlAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = urlAPIHelper.h; sourceTree = "<group>"; };
+		84A1C6E11DF6B12200175BAE /* urlAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = urlAPIHelper.m; sourceTree = "<group>"; };
 		A70F0BE61D66AC0A0092124D /* RTMenuIndex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RTMenuIndex.storyboard; sourceTree = "<group>"; };
 		A70F0BE81D66ACEA0092124D /* RTMenuIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMenuIndex.h; sourceTree = "<group>"; };
 		A70F0BE91D66ACEA0092124D /* RTMenuIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMenuIndex.m; sourceTree = "<group>"; };
@@ -344,6 +350,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		84A1C6DD1DF6B12200175BAE /* common */ = {
+			isa = PBXGroup;
+			children = (
+				84A1C6DE1DF6B12200175BAE /* SeesionAuthUIViewController.h */,
+				84A1C6DF1DF6B12200175BAE /* SeesionAuthUIViewController.m */,
+				84A1C6E01DF6B12200175BAE /* urlAPIHelper.h */,
+				84A1C6E11DF6B12200175BAE /* urlAPIHelper.m */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		A70F0BFA1D66EFA60092124D /* RTMenuDish */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +458,7 @@
 		A77569571D655DCE008D3718 /* MrposGeeks */ = {
 			isa = PBXGroup;
 			children = (
+				84A1C6DD1DF6B12200175BAE /* common */,
 				A775695B1D655DCE008D3718 /* AppDelegate.h */,
 				A775695C1D655DCE008D3718 /* AppDelegate.m */,
 				A77569641D655DCE008D3718 /* Assets.xcassets */,
@@ -951,6 +969,7 @@
 				A7B2A8FC1D9238D4002A25FE /* RTMenuOrderSingleDish.m in Sources */,
 				A7B2A90B1D92873F002A25FE /* RTMenuOrderSingleDishOptionType.m in Sources */,
 				A7DAEB751D87D61C00EAF660 /* RTMenuPackageMainForm.m in Sources */,
+				84A1C6E31DF6B12200175BAE /* urlAPIHelper.m in Sources */,
 				A7DAEB6C1D879D9C00EAF660 /* RTMenuPackage.m in Sources */,
 				A7B2A90E1D928753002A25FE /* RTMenuOrderDishOptionTypeRadioCell.m in Sources */,
 				A739301B1D9A9A7300E685B9 /* RTMenuOrderViewPackageDish.m in Sources */,
@@ -997,6 +1016,7 @@
 				A77569941D656386008D3718 /* RTRoot.m in Sources */,
 				EE4B6FC21D8853420053A8F4 /* RTMenuPackageChooseDishCell.m in Sources */,
 				A7B2A9051D9253F8002A25FE /* RTMenuOrderPackageCell.m in Sources */,
+				84A1C6E21DF6B12200175BAE /* SeesionAuthUIViewController.m in Sources */,
 				A7CDD0821D8675E200B35C3F /* RTMenuDishDataForm.m in Sources */,
 				A7B2A9111D9288D8002A25FE /* RTMenuOrderDishOptionTypeCheckCell.m in Sources */,
 				A74DC4D21D7946C1004DEA56 /* NSData+CommonCrypto.m in Sources */,
