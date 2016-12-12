@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SeesionAuthUIViewController.h"
+#import "accountDataMgr.h"
 
-@interface RTLogin : UIViewController
+@interface RTLogin : SeesionAuthUIViewController
 
 @end

@@ -10,7 +10,9 @@
 #import <CommonCrypto/CommonDigest.h>
 
 NSString *host_URL              = SERVICE_URL;
-NSString *getiOSSetting_URL     = SERVICE_URL@"/Settings/getiOSSetting";
+NSString *accountInfo_URL       = SERVICE_URL@"/account/info/last_modified:{1}";
+NSString *login_URL             = SERVICE_URL@"/account/login";
+/*NSString *getiOSSetting_URL     = SERVICE_URL@"/Settings/getiOSSetting";
 NSString *login_URL             = SERVICE_URL@"/Users/appLogin";
 NSString *logout_URL            = SERVICE_URL@"/Users/appLoginOut";
 NSString *forgetPassword_URL    = SERVICE_URL@"/Users/forgotPassword";
@@ -27,7 +29,7 @@ NSString *joinMatch_URL         = SERVICE_URL@"/Match/joinMatch";
 NSString *joinNetworkGame_URL   = SERVICE_URL@"/Match/joinNetworkGame";
 NSString *bindCard_URL          = SERVICE_URL@"/Users/bindRFIDCard";
 NSString *unbindCard_URL        = SERVICE_URL@"/Users/unbindRFIDCard";
-NSString *getCards_URL          = SERVICE_URL@"/Users/getRFIDCards";
+NSString *getCards_URL          = SERVICE_URL@"/Users/getRFIDCards";*/
 
 
 NSString *GOOGLE_API_KEY        = @"AIzaSyCnRpdg-XPERsvstqMzy2rGCb1Ewf3RaPE";
@@ -53,6 +55,15 @@ NSString *AWS_BUCKET_NAME       = @"fidodartsphoto";
             result[14], result[15]
             ];
 }
+
+
++ (NSString*)stringForHttpMethod:(httpMethod)method {
+    if( http_GET == method) return @"GET";
+    else if( http_POST == method) return @"POST";
+    else
+        return @"GET";
+}
+
 
 +(float) getFloatValue:(NSNumber*)number {
     if( nil == number || [number isEqual:[NSNull null]] ) { return 0.0f; }

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "accountDataMgr.h"
 
 @interface RTLoginUserCell : UICollectionViewCell
 
 - (void)updateView:(NSDictionary *)itemData;
+- (void)updateViewByAccountData:(accountData *)itemData;
 
 @end

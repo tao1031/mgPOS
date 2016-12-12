@@ -8,6 +8,7 @@
 
 #import "RTLoginUserCell.h"
 
+
 @interface RTLoginUserCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imgUserPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *labUserName;
@@ -20,6 +21,11 @@
 - (void)updateView:(NSDictionary *)itemData  {
     self.imgUserPhoto.image = [UIImage imageNamed:[itemData objectForKey:@"userimage"]];
     self.labUserName.text = [itemData objectForKey:@"name"];
+}
+
+- (void)updateViewByAccountData:(accountData *)itemData {
+    self.labUserName.text = itemData.name;
+    self.imgUserPhoto.image = [UIImage imageNamed:itemData.photoUrl];
 }
 
 @end

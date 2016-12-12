@@ -13,6 +13,7 @@
 		07FF6E001D7E714B00A8856A /* RTMenuDishOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF6DFF1D7E714B00A8856A /* RTMenuDishOption.m */; };
 		84A1C6E21DF6B12200175BAE /* SeesionAuthUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C6DF1DF6B12200175BAE /* SeesionAuthUIViewController.m */; };
 		84A1C6E31DF6B12200175BAE /* urlAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C6E11DF6B12200175BAE /* urlAPIHelper.m */; };
+		84A1C6E61DF93F0900175BAE /* accountDataMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1C6E51DF93F0900175BAE /* accountDataMgr.m */; };
 		A5AECD49C9D9FE5A3EE637A9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36E7F226A3B408FF06C25D /* libPods.a */; };
 		A70F0BE71D66AC0A0092124D /* RTMenuIndex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A70F0BE61D66AC0A0092124D /* RTMenuIndex.storyboard */; };
 		A70F0BEA1D66ACEA0092124D /* RTMenuIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = A70F0BE91D66ACEA0092124D /* RTMenuIndex.m */; };
@@ -131,6 +132,8 @@
 		84A1C6DF1DF6B12200175BAE /* SeesionAuthUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeesionAuthUIViewController.m; sourceTree = "<group>"; };
 		84A1C6E01DF6B12200175BAE /* urlAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = urlAPIHelper.h; sourceTree = "<group>"; };
 		84A1C6E11DF6B12200175BAE /* urlAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = urlAPIHelper.m; sourceTree = "<group>"; };
+		84A1C6E51DF93F0900175BAE /* accountDataMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = accountDataMgr.m; sourceTree = "<group>"; };
+		84A1C6E71DF93F5900175BAE /* accountDataMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = accountDataMgr.h; sourceTree = "<group>"; };
 		A70F0BE61D66AC0A0092124D /* RTMenuIndex.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RTMenuIndex.storyboard; sourceTree = "<group>"; };
 		A70F0BE81D66ACEA0092124D /* RTMenuIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTMenuIndex.h; sourceTree = "<group>"; };
 		A70F0BE91D66ACEA0092124D /* RTMenuIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTMenuIndex.m; sourceTree = "<group>"; };
@@ -361,6 +364,15 @@
 			path = common;
 			sourceTree = "<group>";
 		};
+		84A1C6E41DF93ED500175BAE /* data */ = {
+			isa = PBXGroup;
+			children = (
+				84A1C6E71DF93F5900175BAE /* accountDataMgr.h */,
+				84A1C6E51DF93F0900175BAE /* accountDataMgr.m */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
 		A70F0BFA1D66EFA60092124D /* RTMenuDish */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +470,7 @@
 		A77569571D655DCE008D3718 /* MrposGeeks */ = {
 			isa = PBXGroup;
 			children = (
+				84A1C6E41DF93ED500175BAE /* data */,
 				84A1C6DD1DF6B12200175BAE /* common */,
 				A775695B1D655DCE008D3718 /* AppDelegate.h */,
 				A775695C1D655DCE008D3718 /* AppDelegate.m */,
@@ -982,6 +995,7 @@
 				A7B2A9081D926851002A25FE /* RTMenuOrderSingleDishOption.m in Sources */,
 				A70F0BF81D66B4D20092124D /* RTMenuDishTypeCell.m in Sources */,
 				A7DAEB6F1D87CD5A00EAF660 /* RTMenuPackageMain.m in Sources */,
+				84A1C6E61DF93F0900175BAE /* accountDataMgr.m in Sources */,
 				A7ED27651D76CA1000EF2E11 /* RTLogin.m in Sources */,
 				A782AD551D98B18B00C0012B /* RTMenuOrderPackageChoose.m in Sources */,
 				A7B2A8FF1D9238F7002A25FE /* RTMenuOrderDishTypeCell.m in Sources */,

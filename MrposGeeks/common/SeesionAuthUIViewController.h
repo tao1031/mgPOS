@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "urlAPIHelper.h"
 
 typedef void (^CompletionBlock)(NSData *data, NSURLResponse *response, NSError *error);
 
@@ -23,5 +24,5 @@ typedef void (^CompletionBlock)(NSData *data, NSURLResponse *response, NSError *
 -(void) showBusyView;
 -(void) showBusyViewWithText:(NSString*)message;
 -(void) hideBusyView;
--(void) mgAPIRequest:(NSURL*)url postDataDic:(NSDictionary*)postData busyString:(NSString*)busyStr CompletionBlock:completionHandler;
+-(void) mgAPIRequest:(NSString*)urlStr apiMethod:(httpMethod)method postDataDic:(NSDictionary*)postData busyString:(NSString*)busyStr CompletionBlock:completionHandler;
 @end

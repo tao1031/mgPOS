@@ -11,10 +11,19 @@
 
 #import <Foundation/Foundation.h>
 
-#define SERVICE_URL @"https://114.32.232.137:9453"
+#define REMOTE_DATA
+
+#define SERVICE_URL @"http://192.168.1.141:80"
+
+typedef enum httpMethods{
+    http_GET,
+    http_POST,
+} httpMethod;
 
 extern const NSString *host_URL;
-extern const NSString *getiOSSetting_URL;
+extern const NSString *accountInfo_URL;
+extern const NSString *login_URL;
+/*extern const NSString *getiOSSetting_URL;
 extern const NSString *login_URL;
 extern const NSString *logout_URL;
 extern const NSString *forgetPassword_URL;
@@ -37,10 +46,11 @@ extern const NSString *GOOGLE_API_KEY;
 
 extern const NSString *AWS_ACCESS_KEY_ID;
 extern const NSString *AWS_ACCESS_KEY_SECRET;
-extern const NSString *AWS_BUCKET_NAME;
+extern const NSString *AWS_BUCKET_NAME;*/
 
 @interface urlAPIHelper : NSObject
 
++ (NSString*)stringForHttpMethod:(httpMethod)method;
 + (NSString*)md5:(NSString*)src;
 +(float) getFloatValue:(NSNumber*)number;
 +(int) getIntValue:(NSNumber*)number;

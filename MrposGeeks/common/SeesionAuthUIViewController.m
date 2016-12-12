@@ -78,42 +78,62 @@
     }
 }
 
--(void) mgAPIRequest:(NSURL*)url postDataDic:(NSDictionary*)postData busyString:(NSString*)busyStr CompletionBlock:completionHandler{
+-(void) mgAPIRequest:(NSString*)urlStr apiMethod:(httpMethod)method postDataDic:(NSDictionary*)postData busyString:(NSString*)busyStr CompletionBlock:completionHandler{
     
     [self showBusyViewWithText:busyStr];
-    NSString* postStr = @"";
-    if(nil != postData) {
-        for(int i=0; i<postData.allKeys.count; i++) {
-            if( 0 == i ) {
-                postStr = [postStr stringByAppendingString:[NSString stringWithFormat:@"%@=%@", postData.allKeys[i], [postData objectForKey:postData.allKeys[i]]]];
-            }
-            else {
-                postStr = [postStr stringByAppendingString:[NSString stringWithFormat:@"&%@=%@", postData.allKeys[i], [postData objectForKey:postData.allKeys[i]]]];
-            }
-        }
-    }
-    
-    NSData *pData = [postStr dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%tu",[pData length]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:pData];
+    NSString* webStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSURL* url = [NSURL URLWithString:webStr];
     
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.timeoutIntervalForRequest = 10.0;
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: self delegateQueue: [NSOperationQueue mainQueue]];
     
-    NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [self hideBusyView];
-        CompletionBlock _block;
-        _block = [completionHandler copy];
-        if(_block) {
-            _block(data, response, error);
+    if( http_POST == method ) {
+        NSString* postStr = @"";
+        if(nil != postData) {
+            NSError *error;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:postData
+                                                               options:NSJSONWritingPrettyPrinted
+                                                                 error:&error];
+            
+            if (! jsonData) {
+                NSLog(@"Got an error: %@", error);
+            } else {
+                postStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            }
         }
-    }];
-    [dataTask resume];
+        
+        //NSLog(@"%@", postStr);
+        
+        NSData *pData = [postStr dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%tu",[pData length]];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:url];
+        [request setHTTPMethod:[urlAPIHelper stringForHttpMethod:method]];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:pData];
+        
+        NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            [self hideBusyView];
+            CompletionBlock _block;
+            _block = [completionHandler copy];
+            if(_block) {
+                _block(data, response, error);
+            }
+        }];
+        [dataTask resume];
+    }
+    else if (http_GET == method) {
+        NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            [self hideBusyView];
+            CompletionBlock _block;
+            _block = [completionHandler copy];
+            if(_block) {
+                _block(data, response, error);
+            }
+        }];
+        [dataTask resume];
+    }
 }
 @end
