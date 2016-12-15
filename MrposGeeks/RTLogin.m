@@ -125,6 +125,7 @@
             [accMgr.accountAry addObject:newData];
         }
         [self.accCollectionView reloadData];
+        
     }
     else if( YES == [statusCode isEqualToString:@"304"] ) {
         
@@ -199,13 +200,14 @@
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"RTRootMenu" bundle:nil];
         RTRoot *mainview = [sb instantiateViewControllerWithIdentifier:@"rootController"];
         
-        
         mainDelegate.window.rootViewController = mainview;
         [UIView transitionWithView:mainDelegate.window
                           duration:0.5
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:^{ mainDelegate.window.rootViewController = mainview; }
                         completion:nil];
+        
+        [[remoteDataManager instance] getBoardInfoRequest:@"1"];
     }
     else if( YES == [statusCode isEqualToString:@"304"] ) {
         

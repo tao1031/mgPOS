@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SeesionAuthUIViewController.h"
+#import "boardDataMgr.h"
 
 @interface RTMenuDesktop : UIViewController
     

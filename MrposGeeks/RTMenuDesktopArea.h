@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SeesionAuthUIViewController.h"
+#import "boardDataMgr.h"
 
 @interface RTMenuDesktopArea : UIViewController
 
 @property (nonatomic, assign) NSInteger desktopAreaID;
 @property (nonatomic, assign) BOOL isOdd;
-
+#ifdef REMOTE_DATA
+@property (nonatomic, retain) areaData *aData;
+#endif
 @end

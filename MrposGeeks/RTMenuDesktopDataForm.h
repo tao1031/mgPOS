@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SeesionAuthUIViewController.h"
+#import "boardDataMgr.h"
 
 @interface RTMenuDesktopDataForm : UIViewController
 
 @property (nonatomic, assign) NSString  *formType;
 @property (nonatomic, assign) NSInteger desktopAreaID;
 @property (nonatomic, assign) NSInteger desktopDataID;
+@property (nonatomic, retain) tableData *tData;
 
 @end

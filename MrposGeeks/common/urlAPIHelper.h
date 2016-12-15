@@ -18,35 +18,21 @@
 typedef enum httpMethods{
     http_GET,
     http_POST,
+    http_PUT,
+    http_DELETE,
+    http_PATCH,
 } httpMethod;
 
 extern const NSString *host_URL;
 extern const NSString *accountInfo_URL;
 extern const NSString *login_URL;
-/*extern const NSString *getiOSSetting_URL;
-extern const NSString *login_URL;
-extern const NSString *logout_URL;
-extern const NSString *forgetPassword_URL;
-extern const NSString *createPlayer_URL;
-extern const NSString *getPlayerInfo_URL;
-extern const NSString *getLeaderBoard_URL;
-extern const NSString *getStoreInfo_URL;
-extern const NSString *getMatches_URL;
-extern const NSString *getThemes_URL;
-extern const NSString *setTheme_URL;
-extern const NSString *getHistoryScore_URL;
-extern const NSString *modifyPlayerInfo_URL;
-extern const NSString *joinMatch_URL;
-extern const NSString *joinNetworkGame_URL;
-extern const NSString *bindCard_URL;
-extern const NSString *unbindCard_URL;
-extern const NSString *getCards_URL;
-
-extern const NSString *GOOGLE_API_KEY;
-
-extern const NSString *AWS_ACCESS_KEY_ID;
-extern const NSString *AWS_ACCESS_KEY_SECRET;
-extern const NSString *AWS_BUCKET_NAME;*/
+extern const NSString *boardInfo_URL;
+extern const NSString *createArea_URL;
+extern const NSString *modifyArea_URL;
+extern const NSString *deleteArea_URL;
+extern const NSString *createBoard_URL;
+extern const NSString *modifyBoard_URL;
+extern const NSString *deleteBoard_URL;
 
 @interface urlAPIHelper : NSObject
 

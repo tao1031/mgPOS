@@ -22,14 +22,22 @@
 @property (weak, nonatomic) IBOutlet UITextField *textMaxPeople;
 @property (weak, nonatomic) IBOutlet UIButton *btnDelete;
 
+#ifdef REMOTE_DATA
+-(void) remoteDataLoad;
+#endif
 @end
 
 @implementation RTMenuDesktopDataForm
+@synthesize tData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self defInit];
+#ifdef REMOTE_DATA
+    [self remoteDataLoad];
+#else
     [self defDataLoad];
+#endif
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +54,20 @@
     [RTViewLayer viewCornerBorderColor:self.textMaxPeople setBorderColor:[UIColor colorWithRed:0.0f/255.0f green:59.0f/255.0f blue:84.0f/255.0f alpha:0.2f]];
 }
 
+#ifdef REMOTE_DATA
+-(void) remoteDataLoad {
+    self.btnDelete.enabled = NO;
+    if ([self.formType isEqualToString:@"edit"]) {
+        if( nil != tData ) {
+            self.switchStatus.on = tData.enable;
+            self.textName.text = tData.tableName;
+            self.textMaxPeople.text = [NSString stringWithFormat:@"%d", tData.capacity];
+        }
+        
+        self.btnDelete.enabled = YES;
+    }
+}
+#endif
 -(void)defDataLoad{
     //初始化編輯表單內容
     self.btnDelete.enabled = NO;

@@ -25,6 +25,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *textAreaLowPrice;
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
+
+#ifdef REMOTE_DATA
+-(void) remoteDataLoad;
+-(void)addDesktopAreaByAreaData:(areaData*) data;
+#endif
 @end
 
 @implementation RTMenuDesktop
@@ -32,7 +37,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self defInit];
+#ifdef REMOTE_DATA
+    [self remoteDataLoad];
+#else
     [self defDataLoad];
+#endif
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +59,26 @@
     [RTViewLayer viewCornerRadius:self.btnSave];
     [RTViewLayer viewShadow:self.viewShadow setShadowColor:[UIColor colorWithRed:0.0f/255.0f green:59.0f/255.0f blue:84.0f/255.0f alpha:0.6f]];
 }
+
+#ifdef REMOTE_DATA
+-(void) remoteDataLoad {
+    boardDataMgr* bdMgr = [boardDataMgr instance];
+    NSArray *desktopAreaArray = bdMgr.areaAry;
+    
+    for (areaData *areaData in desktopAreaArray) {
+        [self addDesktopAreaByAreaData:areaData];
+    }
+}
+
+-(void)addDesktopAreaByAreaData:(areaData*) data {
+    RTMenuDesktopArea *mainview = [self.storyboard instantiateViewControllerWithIdentifier:@"RTMenuDesktopArea"];
+    mainview.aData = data;
+    mainview.isOdd = (self.stackView.arrangedSubviews.count % 2 == 1) ? YES : NO;
+    [mainview.view.widthAnchor constraintEqualToConstant:250].active = true;
+    [self.stackView addArrangedSubview:mainview.view];
+    [self addChildViewController:mainview];
+}
+#endif
 
 -(void)defDataLoad{
     NSString *sqlstr = @"";

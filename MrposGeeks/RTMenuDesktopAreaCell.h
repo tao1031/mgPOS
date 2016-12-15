@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "boardDataMgr.h"
 
 @interface RTMenuDesktopAreaCell : UITableViewCell
 
 - (void)updateView:(NSDictionary *)itemData;
+- (void)updateViewByTableData:(tableData *)itemData;
 
 @end

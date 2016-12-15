@@ -28,4 +28,8 @@
 - (void)updateView:(NSDictionary *)itemData  {
     self.labTitle.text = [NSString stringWithFormat:@"%@-%@%@",[itemData objectForKey:@"name"],[itemData objectForKey:@"maxpeople"],NSLocalizedString(@"unitPeople", @"人")];
 }
+
+- (void)updateViewByTableData:(tableData *)itemData {
+    self.labTitle.text = [NSString stringWithFormat:@"%@  %d%@", itemData.tableName,itemData.capacity,NSLocalizedString(@"unitPeople", @"人")];
+}
 @end

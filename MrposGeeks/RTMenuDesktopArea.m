@@ -21,6 +21,9 @@
     RTDatabaseCore *rtDatabase;
     RTStringCheck *rtStringCheck;
     BOOL editStatus;  //編輯返回重新讀取
+#ifdef REMOTE_DATA
+    areaData* aData;
+#endif
 }
 @property (weak, nonatomic) IBOutlet UIView *viewShadow;
 @property (weak, nonatomic) IBOutlet UIButton *btnAdd;
@@ -28,14 +31,22 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+#ifdef REMOTE_DATA
+-(void) remoteDataLoad;
+#endif
 @end
 
 @implementation RTMenuDesktopArea
+@synthesize aData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self defInit];
+#ifdef REMOTE_DATA
+    [self remoteDataLoad];
+#else
     [self defDataLoad];
+#endif
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +74,59 @@
     editStatus = NO;
 }
 
+#ifdef REMOTE_DATA
+-(void) remoteDataLoad {
+    if(nil != aData) {
+        // area data
+        self.labelTitle.text = aData.areaName;
+        self.labelPrice.text = [NSString stringWithFormat:@"%@:%@",NSLocalizedString(@"orderLowPrice", @"最低消費"),aData.areaNotice];
+        
+        // table data
+        desktopItemArray = aData.tableAry;
+        [self.tableView reloadData];
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RTMenuDesktopAreaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RTMenuDesktopAreaCell" forIndexPath:indexPath];
+    tableData* itemData = [desktopItemArray objectAtIndex:indexPath.row];
+    [cell updateViewByTableData:itemData];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    editStatus = YES;
+    RTMenuDesktopDataForm *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RTMenuDesktopDataForm"];
+    tableData* itemData = [desktopItemArray objectAtIndex:indexPath.row];
+    detail.formType = @"edit";
+    detail.tData = itemData;
+    detail.desktopAreaID = [itemData.areaId integerValue];
+    detail.desktopDataID = [itemData.tabldId integerValue];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+#else
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RTMenuDesktopAreaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RTMenuDesktopAreaCell" forIndexPath:indexPath];
+    [cell updateView:[desktopItemArray objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    editStatus = YES;
+    RTMenuDesktopDataForm *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RTMenuDesktopDataForm"];
+    detail.formType = @"edit";
+    detail.desktopAreaID = self.desktopAreaID;
+    detail.desktopDataID = [[[desktopItemArray objectAtIndex:indexPath.row] objectForKey:@"sid"] integerValue];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+#endif
+
 -(void)defDataLoad{
     NSString *sqlstr = @"";
     
@@ -83,22 +147,6 @@
     return desktopItemArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RTMenuDesktopAreaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RTMenuDesktopAreaCell" forIndexPath:indexPath];
-    [cell updateView:[desktopItemArray objectAtIndex:indexPath.row]];
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    editStatus = YES;
-    RTMenuDesktopDataForm *detail = [self.storyboard instantiateViewControllerWithIdentifier:@"RTMenuDesktopDataForm"];
-    detail.formType = @"edit";
-    detail.desktopAreaID = self.desktopAreaID;
-    detail.desktopDataID = [[[desktopItemArray objectAtIndex:indexPath.row] objectForKey:@"sid"] integerValue];
-    [self.navigationController pushViewController:detail animated:YES];
-}
 
 - (IBAction)actThisSetting:(id)sender {
     editStatus = YES;

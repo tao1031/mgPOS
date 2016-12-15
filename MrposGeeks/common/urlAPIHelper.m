@@ -12,31 +12,15 @@
 NSString *host_URL              = SERVICE_URL;
 NSString *accountInfo_URL       = SERVICE_URL@"/account/info/last_modified:{1}";
 NSString *login_URL             = SERVICE_URL@"/account/login";
-/*NSString *getiOSSetting_URL     = SERVICE_URL@"/Settings/getiOSSetting";
-NSString *login_URL             = SERVICE_URL@"/Users/appLogin";
-NSString *logout_URL            = SERVICE_URL@"/Users/appLoginOut";
-NSString *forgetPassword_URL    = SERVICE_URL@"/Users/forgotPassword";
-NSString *createPlayer_URL      = SERVICE_URL@"/Users/createPlayer";
-NSString *getPlayerInfo_URL     = SERVICE_URL@"/Users/getPlayerInfo";
-NSString *getLeaderBoard_URL    = SERVICE_URL@"/Match/getLeaderBoard";
-NSString *getStoreInfo_URL      = SERVICE_URL@"/Store/getStoreInfo";
-NSString *getMatches_URL        = SERVICE_URL@"/Match/getMatches";
-NSString *getThemes_URL         = SERVICE_URL@"/Theme/getThemes";
-NSString *setTheme_URL          = SERVICE_URL@"/Users/setTheme";
-NSString *getHistoryScore_URL   = SERVICE_URL@"/Match/getHistoryScores";
-NSString *modifyPlayerInfo_URL  = SERVICE_URL@"/Users/modifyPlayer";
-NSString *joinMatch_URL         = SERVICE_URL@"/Match/joinMatch";
-NSString *joinNetworkGame_URL   = SERVICE_URL@"/Match/joinNetworkGame";
-NSString *bindCard_URL          = SERVICE_URL@"/Users/bindRFIDCard";
-NSString *unbindCard_URL        = SERVICE_URL@"/Users/unbindRFIDCard";
-NSString *getCards_URL          = SERVICE_URL@"/Users/getRFIDCards";*/
+NSString *boardInfo_URL         = SERVICE_URL@"/board/info/last_modified:{last_modified}";
+NSString *createArea_URL        = SERVICE_URL@"/board/area";
+NSString *modifyArea_URL        = SERVICE_URL@"/board/area/id:{id}";
+NSString *deleteArea_URL        = SERVICE_URL@"/board/area/id:{id}";
+NSString *createBoard_URL       = SERVICE_URL@"/board/board";
+NSString *modifyBoard_URL       = SERVICE_URL@"/board/board/";
+NSString *deleteBoard_URL       = SERVICE_URL@"/board/board/";
 
 
-NSString *GOOGLE_API_KEY        = @"AIzaSyCnRpdg-XPERsvstqMzy2rGCb1Ewf3RaPE";
-
-NSString *AWS_ACCESS_KEY_ID     = @"AKIAICGXGFKXSWVPQD7A";
-NSString *AWS_ACCESS_KEY_SECRET = @"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";
-NSString *AWS_BUCKET_NAME       = @"fidodartsphoto";
 @implementation urlAPIHelper
 
 + (NSString*)md5:(NSString*)src{

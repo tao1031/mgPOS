@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SeesionAuthUIViewController.h"
 #import "accountDataMgr.h"
+#import "remoteDataManager.h"
 
 @interface RTLogin : SeesionAuthUIViewController
 
